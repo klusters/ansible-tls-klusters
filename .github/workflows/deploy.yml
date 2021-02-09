@@ -4,10 +4,6 @@ name: "deploy"
 
 on:
   push:
-    paths:
-    - 'test/docker/**'
-    - '.github/workflows/deploy.yml'
-    - 'molecule/kickstart/**'
 
 jobs:
   molecule:
