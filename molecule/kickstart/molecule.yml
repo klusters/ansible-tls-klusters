@@ -3,7 +3,7 @@
 dependency:
   name: galaxy
   options:
-    role-file: ../../inventories/test/docker/requirements/ansible_requirements.yml
+    role-file: inventories/test/docker/requirements/ansible_requirements.yml
 
 driver:
   name: docker
@@ -23,6 +23,6 @@ platforms:
 provisioner:
   name: ansible
   playbooks:
-    converge: ../../playbooks/tls/keystores.yml
+    converge: playbooks/tls/keystores.yml
 
 ...
