@@ -4,9 +4,13 @@
   hosts: all
 
   tasks:
-  - name: Create users
+  - name: Ensure users exist
     ansible.builtin.user:
-      name: '{{ item }}'
-    loop: "{{ tls_keystores|subelements('tls_keystore_owner') }}"
+      name: '{{ item.tls_keystore_owner }}'
+    loop: "{{ tls_keystores }}"
 
+  - name: Ensure group exist
+    ansible.builtin.group:
+      name: '{{ item.tls_keystore_group }}'
+    loop: "{{ tls_keystores }}"
 ...
