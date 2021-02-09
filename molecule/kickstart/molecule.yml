@@ -3,7 +3,7 @@
 dependency:
   name: galaxy
   options:
-    role-file: inventories/test/docker/requirements/ansible_requirements.yml
+    requirements-file: inventories/test/docker/requirements/ansible_requirements.yml
 
 driver:
   name: docker
