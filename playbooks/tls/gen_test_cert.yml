@@ -1,3 +1,5 @@
+---
+
 - name: Generate test certificate and private key
   hosts: all
 
