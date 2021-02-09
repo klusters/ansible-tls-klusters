@@ -1,0 +1,38 @@
+---
+
+name: "deploy"
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      PY_COLORS: 1
+      ANSIBLE_FORCE_COLOR: 1
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+        with:
+          path: ansible-tls-klusters
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install Python dependencies
+        working-directory: ansible-tls-klusters
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r inventories/test/docker/requirements/python_requirements.txt
+
+      - name: Run playbooks
+        working-directory: ansible-tls-klusters
+        run: |
+          molecule test -s kickstart

@@ -1,0 +1,29 @@
+---
+
+dependency:
+  name: galaxy
+  options:
+    role-file: ../../inventories/tests/docker/requirements/ansible_requirements.yml
+
+driver:
+  name: docker
+
+lint: |
+  yamllint .
+  ansible-lint .
+
+platforms:
+  - name: instance
+    groups: ['docker']
+    image: ${MOLECULE_DISTRO:-centos-7}
+    privileged: true
+    command: ${MOLECULE_COMMAND:-"/usr/sbin/init"}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+provisioner:
+  name: ansible
+  playbooks:
+    converge: ../../playbooks/tls/keystores.yml
+
+...
