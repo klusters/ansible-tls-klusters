@@ -1,0 +1,12 @@
+---
+
+- name: Create users
+  hosts: all
+
+  tasks:
+  - name: Create users
+    ansible.builtin.user:
+      name: '{{ item }}'
+    loop: "{{ tls_keystores|subelements('tls_keystore_owner') }}"
+
+...
