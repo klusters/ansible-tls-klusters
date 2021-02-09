@@ -9,8 +9,8 @@ driver:
   name: docker
 
 lint: |
-  yamllint .
-  ansible-lint .
+  yamllint playbooks/**
+  ansible-lint playbooks/**
 
 platforms:
 - name: instance
@@ -23,6 +23,6 @@ platforms:
 provisioner:
   name: ansible
   playbooks:
-    converge: playbooks/tls/keystores.yml
+    converge: ../../playbooks/tls/keystores.yml
 
 ...
