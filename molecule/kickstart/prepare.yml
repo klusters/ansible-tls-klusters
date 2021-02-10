@@ -1,7 +1,6 @@
 ---
 
 - import_playbook: ../../playbooks/tls/dependencies.yml
-- import_playbook: ../../playbooks/tls/gen_test_cert.yml
 - import_playbook: ../../playbooks/tls/create_users.yml
 
 ...
