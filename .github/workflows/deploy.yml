@@ -37,7 +37,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ${{ env.pythonLocation }}
-        key: ${{ env.pythonLocation }}-${{ hashFiles('inventories/test/docker/requirements/python_requirements.txt') }}
+        key: ${{ env.pythonLocation }}-${{ hashFiles('**/python_requirements.txt') }}
 
     - name: Install Python dependencies
       working-directory: ansible-tls-klusters

@@ -22,8 +22,6 @@ platforms:
 
 provisioner:
   name: ansible
-  playbooks:
-    converge: ../../playbooks/tls/keystores.yml
   inventory:
     links:
       group_vars: ../../inventories/test/docker/group_vars/

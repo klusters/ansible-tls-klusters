@@ -1,0 +1,6 @@
+---
+
+- import_playbook: ../../playbooks/tls/keystores.yml
+- import_playbook: ../../playbooks/tls/truststores.yml
+
+...

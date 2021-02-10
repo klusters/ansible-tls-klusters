@@ -1,0 +1,14 @@
+---
+
+- name: Manage truststores
+  hosts: all
+
+  tasks:
+  - name: Use role truststores
+    include_role:
+      name: klusters.tls.truststores
+    loop: '{{ tls_truststores }}'
+    loop_control:
+      loop_var: outer_item
+
+...
