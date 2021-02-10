@@ -8,9 +8,14 @@
     ansible.builtin.user:
       name: '{{ item.tls_keystore_owner }}'
     loop: "{{ tls_keystores }}"
+    loop_control:
+      label: "{{ item.tls_keystore_owner }}"
 
   - name: Ensure group exist
     ansible.builtin.group:
       name: '{{ item.tls_keystore_group }}'
     loop: "{{ tls_keystores }}"
+    loop_control:
+      label: "{{ item.tls_keystore_group }}"
+
 ...
