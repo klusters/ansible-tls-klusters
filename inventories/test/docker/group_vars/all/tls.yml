@@ -17,7 +17,6 @@ tls_p12_keystore: '{{ tls_p12_path }}/{{ ansible_fqdn }}.pkcs12'
 tls_jks_keystore: '{{ tls_jks_path }}/{{ ansible_fqdn }}.jks'
 tls_jks_truststore: '{{ tls_jks_path }}/{{ ansible_fqdn }}-truststore.jks'
 
-
 tls_key_password: 'default'
 tls_p12_password: 'default'
 tls_jks_keystore_password: 'default'
@@ -74,6 +73,5 @@ tls_truststores:
 
   tls_truststore_owner: hbaseuser
   tls_truststore_group: hbaseuser
-
 
 ...
