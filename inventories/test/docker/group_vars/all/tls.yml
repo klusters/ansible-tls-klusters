@@ -12,14 +12,15 @@ tls_cacert: '{{ tls_cacerts_path }}/{{ ansible_fqdn }}.ca'
 tls_cert: '{{ tls_certs_path }}/{{ ansible_fqdn }}.cert'
 tls_key: '{{ tls_keys_path }}/{{ ansible_fqdn }}.key'
 tls_key_encrypted: "{{ tls_keys_path }}/{{ ansible_fqdn }}_encrypted.key"
+
 tls_p12_keystore: '{{ tls_p12_path }}/{{ ansible_fqdn }}.pkcs12'
 tls_jks_keystore: '{{ tls_jks_path }}/{{ ansible_fqdn }}.jks'
 tls_jks_truststore: '{{ tls_jks_path }}/{{ ansible_fqdn }}-truststore.jks'
 
 
-tls_keys_password: 'default'
+tls_key_password: 'default'
 tls_p12_password: 'default'
-tls_jks_password: 'default'
+tls_jks_keystore_password: 'default'
 tls_jks_truststore_password: 'default'
 
 tls_keystore_owner: root
@@ -34,9 +35,9 @@ tls_keystores:
   tls_key: '/etc/tls/default/keys/{{ ansible_fqdn }}.key'
   tls_base_path: /etc/tls/hdfs
 
-  tls_keys_password: 'hdfspassword'
-  tls_jks_password: 'hdfspassword'
+  tls_key_password: 'hdfspassword'
   tls_p12_password: 'hdfspassword'
+  tls_jks_keystore_password: 'hdfspassword'
   tls_jks_truststore_password: 'hdfspassword'
 
   tls_keystore_owner: hdfsuser
@@ -47,9 +48,9 @@ tls_keystores:
   tls_key: '/etc/tls/default/keys/{{ ansible_fqdn }}.key'
   tls_base_path: /etc/tls/hbase
 
-  tls_keys_password: 'hbasepassword'
-  tls_jks_password: 'hbasepassword'
+  tls_key_password: 'hbasepassword'
   tls_p12_password: 'hbasepassword'
+  tls_jks_keystore_password: 'hbasepassword'
   tls_jks_truststore_password: 'hbasepassword'
 
   tls_keystore_owner: hbaseuser
