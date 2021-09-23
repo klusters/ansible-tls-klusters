@@ -5,39 +5,41 @@ tls_base_path: /etc/tls/default
 tls_cacerts_path: '{{ tls_base_path }}/cacerts'
 tls_certs_path: '{{ tls_base_path }}/certs'
 tls_keys_path: '{{ tls_base_path }}/keys'
-tls_jks_path: '{{ tls_base_path }}/java'
-tls_p12_path: '{{ tls_base_path }}/pkcs12'
+tls_truststores_path: '{{ tls_base_path }}/truststores'
+tls_keystores_path: '{{ tls_base_path }}/keystores'
 
 tls_cacert: '{{ tls_cacerts_path }}/{{ ansible_fqdn }}.ca'
 tls_cert: '{{ tls_certs_path }}/{{ ansible_fqdn }}.cert'
-tls_key: '{{ tls_keys_path }}/{{ ansible_fqdn }}.key'
-tls_key_encrypted: "{{ tls_keys_path }}/{{ ansible_fqdn }}_encrypted.key"
 
-tls_p12_keystore: '{{ tls_p12_path }}/{{ ansible_fqdn }}.pkcs12'
-tls_jks_keystore: '{{ tls_jks_path }}/{{ ansible_fqdn }}.jks'
-tls_jks_truststore: '{{ tls_jks_path }}/{{ ansible_fqdn }}-truststore.jks'
+tls_key: '{{ tls_keys_path }}/{{ ansible_fqdn }}.key'
+tls_key_encrypted: '{{ tls_keys_path }}/{{ ansible_fqdn }}_encrypted.key'
+tls_truststore: '{{ tls_truststores_path }}/{{ ansible_fqdn }}-truststore.jks'
+tls_keystore: '{{ tls_keystores_path }}/{{ ansible_fqdn }}.jks'
+
+tls_keystore_type: jks
+tls_keystore_alias: '{{ ansible_fqdn }}'
 
 tls_key_password: 'default'
-tls_p12_password: 'default'
-tls_jks_keystore_password: 'default'
-tls_jks_truststore_password: 'default'
-
-tls_keystore_owner: root
-tls_keystore_group: root
+tls_keystore_password: 'default'
+tls_truststore_password: 'default'
 
 tls_truststore_owner: root
 tls_truststore_group: root
+
+tls_keystore_owner: root
+tls_keystore_group: root
 
 tls_keystores:
 - name: hdfs
   tls_cert: '/etc/tls/default/certs/{{ ansible_fqdn }}.cert'
   tls_key: '/etc/tls/default/keys/{{ ansible_fqdn }}.key'
   tls_base_path: /etc/tls/hdfs
+  tls_truststores_path: /etc/tls/hdfs/truststores
+  tls_keystores_path: /etc/tls/hdfs/keystores
 
   tls_key_password: 'hdfspassword'
-  tls_p12_password: 'hdfspassword'
-  tls_jks_keystore_password: 'hdfspassword'
-  tls_jks_truststore_password: 'hdfspassword'
+  tls_keystore_password: 'hdfspassword'
+  tls_truststore_password: 'hdfspassword'
 
   tls_keystore_owner: hdfsuser
   tls_keystore_group: hdfsuser
@@ -46,11 +48,12 @@ tls_keystores:
   tls_cert: '/etc/tls/default/certs/{{ ansible_fqdn }}.cert'
   tls_key: '/etc/tls/default/keys/{{ ansible_fqdn }}.key'
   tls_base_path: /etc/tls/hbase
+  tls_truststores_path: /etc/tls/hbase/truststores
+  tls_keystores_path: /etc/tls/hbase/keystores
 
   tls_key_password: 'hbasepassword'
-  tls_p12_password: 'hbasepassword'
-  tls_jks_keystore_password: 'hbasepassword'
-  tls_jks_truststore_password: 'hbasepassword'
+  tls_keystore_password: 'hbasepassword'
+  tls_truststore_password: 'hbasepassword'
 
   tls_keystore_owner: hbaseuser
   tls_keystore_group: hbaseuser
@@ -59,8 +62,10 @@ tls_truststores:
 - name: hdfs
   tls_cacert: '/etc/tls/default/cacerts/{{ ansible_fqdn }}.ca'
   tls_base_path: /etc/tls/hdfs
+  tls_truststores_path: /etc/tls/hdfs/truststores
+  tls_keystores_path: /etc/tls/hdfs/keystores
 
-  tls_jks_truststore_password: 'hdfspassword'
+  tls_truststore_password: 'hdfspassword'
 
   tls_truststore_owner: hdfsuser
   tls_truststore_group: hdfsuser
@@ -68,8 +73,10 @@ tls_truststores:
 - name: hbase
   tls_cacert: '/etc/tls/default/cacerts/{{ ansible_fqdn }}.ca'
   tls_base_path: /etc/tls/hbase
+  tls_truststores_path: /etc/tls/hbase/truststores
+  tls_keystores_path: /etc/tls/hbase/keystores
 
-  tls_jks_truststore_password: 'hbasepassword'
+  tls_truststore_password: 'hbasepassword'
 
   tls_truststore_owner: hbaseuser
   tls_truststore_group: hbaseuser

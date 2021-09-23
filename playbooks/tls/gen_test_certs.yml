@@ -16,7 +16,7 @@
     - '{{ tls_certs_path }}'
     - '{{ tls_keys_path }}'
 
-  - name: Generate an encrypted private key
+  - name: Generate a private key
     community.crypto.openssl_privatekey:
       path: '{{ tls_key }}'
 
