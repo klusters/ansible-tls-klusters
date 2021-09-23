@@ -1,4 +1,5 @@
-molecule[docker]
+molecule==3.4.0
+molecule-docker
 yamllint
 ansible-lint
 ansible
